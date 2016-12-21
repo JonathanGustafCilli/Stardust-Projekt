@@ -2,17 +2,16 @@ body{
     background-image: url(../images/header1500x445.jpg);
 }
 
-#main-container{/*Det här är koden för den div:en som innehåller huvudinnehållet*/
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    background-color: aqua;
-}
+
 
 #login-form-container{/*Div:en som håller formuläret*/
     width: 25vw;
     height: 50vh;
     margin-left:37.5vw;
+    margin-top: 25vh;
+    padding: 2vw;
+    
+    background-color:aliceblue;
     
     
     
