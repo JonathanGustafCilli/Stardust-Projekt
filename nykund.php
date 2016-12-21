@@ -3,6 +3,6 @@
 		<link href="stylesheets/style.css" rel='stylesheet' type='text/css'>	
 	</head>
 	<body>
-		<p> HÃ„R SKA "LOGGA IN" SIDAN VARA </p>
+		<p> HÄR SKA "LÄGG TILL NY KUND" SIDAN VARA </p>
 	</body>
 </html>
