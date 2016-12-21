@@ -10,9 +10,10 @@ body{
 }
 
 #login-form-container{/*Div:en som håller formuläret*/
-    width: 30vw;
-    height: 40vh;
-    margin-left: 30vw;
+    width: 25vw;
+    height: 50vh;
+    margin-left:37.5vw;
+    
     
     
 }
