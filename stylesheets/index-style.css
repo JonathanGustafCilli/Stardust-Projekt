@@ -10,8 +10,8 @@ body{
 }
 
 #login-form-container{/*Div:en som håller formuläret*/
-    width: 40vw;
-    height: 500px;
+    width: 30vw;
+    height: 40vh;
     margin-left: 30vw;
     
     
