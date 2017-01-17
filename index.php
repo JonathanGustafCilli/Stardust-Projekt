@@ -3,10 +3,10 @@
 <html>
 	<head>
 		<title>Login Page</title>
-		<link rel="stylesheet" type="text/css" href="Stylesheets/style_loggin.css">
+		<link rel="stylesheet" type="text/css" href="Stylesheets/style.css">
     </head>
 	<body>
-        
+     
         
         <div id="menu">
             <img src="Picture/starlogo.png"/>
@@ -14,7 +14,7 @@
 		
         <div id="main_container">
 			<div id="box">
-                <form action="getuserinfo.php" method="POST">
+                <form action="Php/getuserinfo.php" method="POST">
 				    <table>
                     <tr>
                         <th><p>Please login</p></th>
@@ -30,10 +30,11 @@
 				    </tr>
 					</table>
                 </form>
+                <a href="javascript:AlertIt();">
+                    <p style="font-size:0.9vw; text-align: center; color: blue">Glömt lösernod</p>
+                </a>
             </div>
 		</div>
-        
         <div id="footer"></div>
-        
-	</body>
+    </body>
 </html>
