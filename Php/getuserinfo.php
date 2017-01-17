@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Require password hashing class
@@ -14,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $variabel = 0; 	
     // Get a connection for the database
-    require_once('../../../mysqli_connect.php');
+    require_once('/../../../mysqli_connect.php');
  
     // Create a query for the database
     $query = "SELECT username, password FROM users";
@@ -34,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	   	//echo '<p>' . $row['username'] . '<br>' . $row['password'] . '</p>';
 	   	if($row['username'] == $user && $bool==true){
 	   		$variabel=2;
+            $password2 = $row['password'];
 	   	}else{
 	   		if($variabel!=2){
 	   			$variabel=1;
@@ -41,7 +44,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	   	}
 	   }
 	   	if($variabel==2){
-	   		header('Location: ../nykund.php'); // <-- WHAT TO DO IF LOGIN IS SUCCESFUL
+	   		if( isset($_POST['remember'])){
+                setcookie('starname',$user,time()+60*60*7, "/");   
+                setcookie('starpass',$password2,time()+60*60*7, "/");
+            }
+             // SESSION 
+             $_SESSION['loggedin'] = true;
+             $_SESSION['username'] = $user;
+            
+            header('Location: Inside/welcome.php'); // <-- WHAT TO DO IF LOGIN IS SUCCESFUL
 	   		exit; 
             
             
@@ -57,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
 	
 	   echo "Couldn't issue database query<br />";
- 
 	   echo mysqli_error($dbc);
     }
  

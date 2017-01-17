@@ -1,5 +1,24 @@
 <?php
  
+/* 
+
+WHAT IS THIS FILE FOR?
+    |->THIS IS THE PHP PART TO REGISTER NEW USERS
+    |->IT IS CONNECTED TO -nykonto.php-
+    |->IT STORES THE VARIABLES FROM THE FORM INTO THE DATABASE 
+       |->IT ALSO ENCRYPTS THE PASSWORD FROM THE FORM
+
+                                                                                -Jonathan Cilli
+*/
+
+session_start();
+        
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+            //echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
+        } else {
+            echo "Please log in first to see this page.";
+        }
+
 // Require password hashing class
 require_once('/kryptera.php');      
     
@@ -97,6 +116,7 @@ if(isset($_POST['submit'])){
             
         }   
     } 
+        
     }else{
     header('Location: nykonto.php'); // <-- WHAT TO DO IF PASSWORDCONFIRM DOES NOT MATCH
     exit; 

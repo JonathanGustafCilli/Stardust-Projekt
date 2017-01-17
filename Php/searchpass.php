@@ -1,5 +1,8 @@
 <?php
 
+// I'AM TAKING AWAY THIS FROM THE STARDUST PROJEKT, IT IS NO LONGER USEFUL 
+// PERHAPS I WILL NEED IT TO MAKE THE "FORGOT PASSWORD" SITE
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Require password hashing class
@@ -58,7 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
 	
 	   echo "Couldn't issue database query<br />";
- 
 	   echo mysqli_error($dbc);
     }
  

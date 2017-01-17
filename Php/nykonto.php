@@ -1,4 +1,14 @@
 <html>
+<!-- 
+
+WHAT IS THIS FILE FOR?
+    |->THIS IS THE HTML PART TO REGISTER NEW USERS  
+    |->IT IS CONNECTED TO -kontoadded.php-  
+        |->IT SENDS THE INFORMATION FROM THE FORM TO THE OTHER FILE 
+    |->IT ALSO HAS SOME JAVASCRIPTS THAT CHECKS IF confirmpassword VARIABLE IS THE SAME AS password
+            
+                                                                                -Jonathan Cilli
+-->
     <head>
         <title>Add Users</title>    
         <link rel="script" href="js/js1.js">
@@ -48,6 +58,21 @@
         $("#newpass, #confirmpass").keyup(checkPasswordMatch);
     });
     </script>    
-
+    
+        <!-- SESSION AND COOKIE -->
+    <?php
+        require_once('/Php/checkcookie.php');
+        session_start();
+        
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+            header('Location: /Php/Inside/welcome.php'); // <-- WHAT TO DO IF LOGIN IS SUCCESFUL
+	   		exit;
+        }else if(isset($_COOKIE['starname']) and isset($_COOKIE['starpass'])){
+            header('Location: /Php/Inside/welcome.php'); // <-- WHAT TO DO IF LOGIN IS SUCCESFUL
+	   		exit;
+        }else{
+            echo "Please log in first to see this page.";
+        }
+    ?>
 </body>
 </html>
