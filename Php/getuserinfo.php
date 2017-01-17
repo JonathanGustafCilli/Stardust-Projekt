@@ -1,12 +1,20 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // Require password hashing class
+    require_once('/kryptera.php');
+    
     // TEST: 
     $user = $_POST['user'];
     $pass = $_POST['pass'];
+    $bool = false;
+    // Instantiate new instance of class
+    $hash_password = new Hash_Password();
+    
     $variabel = 0; 	
     // Get a connection for the database
-    require_once('../../mysqli_connect.php');
+    require_once('../../../mysqli_connect.php');
  
     // Create a query for the database
     $query = "SELECT username, password FROM users";
@@ -19,8 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($response){
 	   //echo '<p><b>WELCOME:</b></p>';
 	   while($row = mysqli_fetch_array($response)){
+           
+        // Verify the crypted password in the database and give back false or true
+        $bool = $hash_password->verify($pass, $row['password']);  
+           
 	   	//echo '<p>' . $row['username'] . '<br>' . $row['password'] . '</p>';
-	   	if($row['username'] == $user && $row['password'] == $pass){
+	   	if($row['username'] == $user && $bool==true){
 	   		$variabel=2;
 	   	}else{
 	   		if($variabel!=2){
@@ -29,10 +41,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	   	}
 	   }
 	   	if($variabel==2){
-	   		echo '<h1>WELCOME TO THE SITE!</h1>'; // <-- WHAT TO DO IF LOGIN IS SUCCESFUL
+	   		header('Location: ../nykund.php'); // <-- WHAT TO DO IF LOGIN IS SUCCESFUL
+	   		exit; 
+            
+            
 	   	}else if($variabel==1){
 	   		//echo '<p>ERROR! --> </p>'; echo $variabel;
-	   		header('Location: index.php'); // <-- WHAT TO DO IF LOGIN IS WRONG
+	   		header('Location: ../index.php'); // <-- WHAT TO DO IF LOGIN IS WRONG
 	   		exit;
 	   		
 	   		/*echo "<script>
