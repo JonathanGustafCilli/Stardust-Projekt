@@ -2,6 +2,7 @@
     <head>
         <title>Add Users</title>    
         <link rel="script" href="js/js1.js">
+		<link rel="stylesheet" type="text/css" href="Stylesheets/style_reg.css">
     </head>
     <body>
         
